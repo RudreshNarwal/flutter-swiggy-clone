@@ -64,7 +64,9 @@ Screen 1               |  Screen 2
 :-------------------------:|:-------------------------:
 ![](screenshots/account1.jpg)|![](screenshots/account2.jpg)|
 
-
+<p>
+  Credit:- vinothvino42
+  </p>
 <p align="justify">
   Made With Flutter 💙
 </p>
