@@ -4,17 +4,17 @@ import 'package:swiggy_ui/utils/ui_helper.dart';
 
 class GenieGroceryCardView extends StatelessWidget {
   const GenieGroceryCardView({
-    Key key,
-    @required this.title,
-    @required this.image,
-    @required this.subtitle,
+    Key? key,
+    required this.title,
+    required this.image,
+    required this.subtitle,
     this.onTap,
   }) : super(key: key);
 
   final String title;
   final String image;
   final String subtitle;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class GenieGroceryCardView extends StatelessWidget {
                 height: 120.0,
                 decoration: BoxDecoration(
                   color: swiggyOrange,
-                  boxShadow: <BoxShadow>[
+                  boxShadow: const <BoxShadow>[
                     BoxShadow(
                       color: Colors.grey,
                       blurRadius: 3.0,
@@ -48,9 +48,12 @@ class GenieGroceryCardView extends StatelessWidget {
                     Text(
                       title,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 18.0, color: Colors.white),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(fontSize: 18.0, color: Colors.white),
                     ),
-                    UIHelper.verticalSpaceSmall(),
+                    UIHelper.verticalSpaceSmall,
                     Expanded(
                       child: Image.asset(
                         image,
@@ -61,12 +64,15 @@ class GenieGroceryCardView extends StatelessWidget {
                 ),
               ),
             ),
-            UIHelper.verticalSpaceMedium(),
+            UIHelper.verticalSpaceMedium,
             Text(
               subtitle,
               maxLines: 2,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 16.0),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText1!
+                  .copyWith(fontSize: 16.0),
             ),
           ],
         ),

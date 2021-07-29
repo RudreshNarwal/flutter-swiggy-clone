@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomDividerView extends StatelessWidget {
   final double dividerHeight;
-  final Color color;
+  final Color? color;
 
-  CustomDividerView({
-    Key key,
+  const CustomDividerView({
+    Key? key,
     this.dividerHeight = 10.0,
     this.color,
   })  : assert(dividerHeight != 0.0),
@@ -16,7 +16,7 @@ class CustomDividerView extends StatelessWidget {
     return Container(
       height: dividerHeight,
       width: double.infinity,
-      color: color == null ? Colors.grey[200] : color,
+      color: color ?? Colors.grey[200],
     );
   }
 }

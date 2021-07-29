@@ -4,10 +4,13 @@ import 'package:swiggy_ui/utils/ui_helper.dart';
 import 'package:swiggy_ui/widgets/responsive.dart';
 
 class SwiggySafetyBannerView extends StatelessWidget {
+  const SwiggySafetyBannerView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final isTabletDesktop = Responsive.isTabletDesktop(context);
-    final cardWidth = MediaQuery.of(context).size.width / (isTabletDesktop ? 3.8 : 1.2);
+    final cardWidth =
+        MediaQuery.of(context).size.width / (isTabletDesktop ? 3.8 : 1.2);
 
     return Container(
       margin: const EdgeInsets.all(15.0),
@@ -20,25 +23,25 @@ class SwiggySafetyBannerView extends StatelessWidget {
                 Icons.arrow_downward,
                 color: swiggyOrange,
               ),
-              UIHelper.horizontalSpaceExtraSmall(),
+              UIHelper.horizontalSpaceExtraSmall,
               Flexible(
                 child: Text(
                   "SWIGGY's KEY MEASURES TO ENSURE SAFETY",
-                  style: Theme.of(context).textTheme.subtitle2.copyWith(
+                  style: Theme.of(context).textTheme.subtitle2!.copyWith(
                         color: swiggyOrange,
                         fontSize: 15.0,
                         fontWeight: FontWeight.w700,
                       ),
                 ),
               ),
-              UIHelper.horizontalSpaceExtraSmall(),
+              UIHelper.horizontalSpaceExtraSmall,
               Icon(
                 Icons.arrow_downward,
                 color: swiggyOrange,
               ),
             ],
           ),
-          UIHelper.verticalSpaceMedium(),
+          UIHelper.verticalSpaceMedium,
           LimitedBox(
             maxHeight: 220.0,
             child: ListView.builder(
@@ -62,7 +65,8 @@ class SwiggySafetyBannerView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +75,7 @@ class SwiggySafetyBannerView extends StatelessWidget {
                                   'No-contact Delivery',
                                   style: Theme.of(context).textTheme.headline6,
                                 ),
-                                UIHelper.verticalSpaceExtraSmall(),
+                                UIHelper.verticalSpaceExtraSmall,
                                 Text(
                                   'Have your order dropped of at your door or gate for added safety',
                                   style: Theme.of(context).textTheme.bodyText1,
@@ -79,18 +83,21 @@ class SwiggySafetyBannerView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          UIHelper.verticalSpaceExtraSmall(),
+                          UIHelper.verticalSpaceExtraSmall,
                           FlatButton(
                             child: Text(
                               'Know More',
-                              style: Theme.of(context).textTheme.headline6.copyWith(color: darkOrange),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(color: darkOrange),
                             ),
                             onPressed: () {},
                           )
                         ],
                       ),
                     ),
-                    UIHelper.horizontalSpaceSmall(),
+                    UIHelper.horizontalSpaceSmall,
                     ClipOval(
                       child: Image.asset(
                         'assets/images/food3.jpg',

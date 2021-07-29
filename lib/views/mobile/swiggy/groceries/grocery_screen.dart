@@ -5,21 +5,21 @@ import 'package:swiggy_ui/widgets/mobile/search_food_list_item_view.dart';
 import 'package:swiggy_ui/widgets/responsive.dart';
 
 class GroceryScreen extends StatelessWidget {
+  const GroceryScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              _GroceryHeaderView(),
-              UIHelper.verticalSpaceMedium(),
-              GroceryListView(
-                title: '156 RESTAURANTS NEARBY',
-              ),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: const <Widget>[
+            _GroceryHeaderView(),
+            UIHelper.verticalSpaceMedium,
+            GroceryListView(
+              title: '156 RESTAURANTS NEARBY',
+            ),
+          ],
         ),
       ),
     );
@@ -28,7 +28,7 @@ class GroceryScreen extends StatelessWidget {
 
 class _GroceryHeaderView extends StatelessWidget {
   const _GroceryHeaderView({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -48,7 +48,7 @@ class _GroceryHeaderView extends StatelessWidget {
             top: 40.0,
             left: 0.4,
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 size: 28.0,
                 color: Colors.white,
@@ -65,17 +65,20 @@ class _GroceryHeaderView extends StatelessWidget {
 
 class GroceryListView extends StatelessWidget {
   const GroceryListView({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
   }) : super(key: key);
 
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    final restaurants = SpotlightBestTopFood.getTopGroceryRestaurants();
+    const restaurants = SpotlightBestTopFood.topGroceryRestaurants;
 
-    final headerStyle = Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.w500, fontSize: 13.0);
+    final headerStyle = Theme.of(context)
+        .textTheme
+        .bodyText1!
+        .copyWith(fontWeight: FontWeight.w500, fontSize: 13.0);
 
     return Container(
       padding: const EdgeInsets.all(15.0),
@@ -83,26 +86,24 @@ class GroceryListView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  title,
-                  style: headerStyle,
-                ),
-                Spacer(),
-                Icon(Icons.filter_list),
-                UIHelper.horizontalSpaceSmall(),
-                Text('SORT/FILTER', style: headerStyle)
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                title,
+                style: headerStyle,
+              ),
+              const Spacer(),
+              const Icon(Icons.filter_list),
+              UIHelper.horizontalSpaceSmall,
+              Text('SORT/FILTER', style: headerStyle)
+            ],
           ),
-          UIHelper.verticalSpaceSmall(),
+          UIHelper.verticalSpaceSmall,
           ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: restaurants.length,
             itemBuilder: (context, index) => SearchFoodListItemView(
               food: restaurants[index],

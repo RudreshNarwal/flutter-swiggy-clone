@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class VegBadgeView extends StatelessWidget {
+  const VegBadgeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -8,7 +10,7 @@ class VegBadgeView extends StatelessWidget {
       height: 15.0,
       width: 15.0,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.green[800]),
+        border: Border.all(color: Colors.green[800]!),
       ),
       child: ClipOval(
         child: Container(

@@ -1,44 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:swiggy_ui/models/spotlight_best_top_food.dart';
 import 'package:swiggy_ui/utils/app_colors.dart';
 import 'package:swiggy_ui/utils/ui_helper.dart';
 import 'package:swiggy_ui/widgets/custom_divider_view.dart';
 
 class MeatScreen extends StatelessWidget {
+  const MeatScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              _buildAppBar(context),
-              _SearchView(),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      _MeatOfferBannerView(),
-                      _CardView(),
-                      _StoresListView(
-                        title: 'Nearby stores',
-                        desc: 'Trusted for best buying experience',
-                        isRemoveItems: true,
-                      ),
-                      CustomDividerView(dividerHeight: 15.0),
-                      _StoresListView(
-                        title: 'Faraway stores',
-                        desc: 'Additional distance fee applicable',
-                      )
-                    ],
-                  ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            _buildAppBar(context),
+            _SearchView(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const <Widget>[
+                    _MeatOfferBannerView(),
+                    _CardView(),
+                    _StoresListView(
+                      title: 'Nearby stores',
+                      desc: 'Trusted for best buying experience',
+                      isRemoveItems: true,
+                    ),
+                    CustomDividerView(dividerHeight: 15.0),
+                    _StoresListView(
+                      title: 'Faraway stores',
+                      desc: 'Additional distance fee applicable',
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -50,8 +50,10 @@ class MeatScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            IconButton(icon: Icon(Icons.arrow_back), onPressed: () => Navigator.pop(context)),
-            UIHelper.horizontalSpaceSmall(),
+            IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => Navigator.pop(context)),
+            UIHelper.horizontalSpaceSmall,
             Container(
               height: 32.0,
               width: 32.0,
@@ -59,13 +61,13 @@ class MeatScreen extends StatelessWidget {
                 border: Border.all(width: 1.0),
                 borderRadius: BorderRadius.circular(16.2),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.location_on,
                 color: Colors.orange,
                 size: 25.0,
               ),
             ),
-            UIHelper.horizontalSpaceSmall(),
+            UIHelper.horizontalSpaceSmall,
             Text(
               'Fresh Meat Stores',
               style: Theme.of(context).textTheme.headline6,
@@ -81,17 +83,17 @@ class _SearchView extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
-        CustomDividerView(dividerHeight: 3.0),
+        const CustomDividerView(dividerHeight: 3.0),
         Container(
           padding: const EdgeInsets.only(left: 15.0, top: 2.0, bottom: 2.0),
           margin: const EdgeInsets.symmetric(horizontal: 15.0),
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[400]),
+            border: Border.all(color: Colors.grey[400]!),
             borderRadius: BorderRadius.circular(2.0),
             color: Colors.white,
             boxShadow: <BoxShadow>[
               BoxShadow(
-                color: Colors.grey[200],
+                color: Colors.grey[200]!,
                 blurRadius: 3.0,
                 spreadRadius: 5.0,
               )
@@ -103,7 +105,7 @@ class _SearchView extends StatelessWidget {
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Search for restaurants and food',
-                    hintStyle: Theme.of(context).textTheme.subtitle2.copyWith(
+                    hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
                           color: Colors.grey,
                           fontSize: 17.0,
                           fontWeight: FontWeight.w600,
@@ -112,9 +114,9 @@ class _SearchView extends StatelessWidget {
                   ),
                 ),
               ),
-              UIHelper.horizontalSpaceMedium(),
+              UIHelper.horizontalSpaceMedium,
               IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () {},
               )
             ],
@@ -126,12 +128,15 @@ class _SearchView extends StatelessWidget {
 }
 
 class _MeatOfferBannerView extends StatelessWidget {
-  final List<String> images = [
+  const _MeatOfferBannerView({Key? key}) : super(key: key);
+
+  static const List<String> _images = [
     'assets/images/banner1.jpg',
     'assets/images/banner2.jpg',
     'assets/images/banner3.jpg',
     'assets/images/banner4.jpg',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -144,10 +149,10 @@ class _MeatOfferBannerView extends StatelessWidget {
         itemHeight: 100,
         duration: 500,
         itemWidth: double.infinity,
-        pagination: SwiperPagination(),
-        itemCount: images.length,
+        pagination: const SwiperPagination(),
+        itemCount: _images.length,
         itemBuilder: (BuildContext context, int index) => Image.asset(
-          images[index],
+          _images[index],
           fit: BoxFit.cover,
         ),
         autoplay: true,
@@ -159,6 +164,8 @@ class _MeatOfferBannerView extends StatelessWidget {
 }
 
 class _CardView extends StatelessWidget {
+  const _CardView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -186,7 +193,7 @@ class _CardView extends StatelessWidget {
                         'No-contact Delivery',
                         style: Theme.of(context).textTheme.headline6,
                       ),
-                      UIHelper.verticalSpaceExtraSmall(),
+                      UIHelper.verticalSpaceExtraSmall,
                       Text(
                         'Have your order dropped of at your door or gate for added safety',
                         style: Theme.of(context).textTheme.bodyText1,
@@ -194,18 +201,21 @@ class _CardView extends StatelessWidget {
                     ],
                   ),
                 ),
-                UIHelper.verticalSpaceExtraSmall(),
+                UIHelper.verticalSpaceExtraSmall,
                 FlatButton(
                   child: Text(
                     'Know More',
-                    style: Theme.of(context).textTheme.headline6.copyWith(color: darkOrange),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6!
+                        .copyWith(color: darkOrange),
                   ),
                   onPressed: () {},
                 )
               ],
             ),
           ),
-          UIHelper.horizontalSpaceSmall(),
+          UIHelper.horizontalSpaceSmall,
           ClipOval(
             child: Image.asset(
               'assets/images/food3.jpg',
@@ -224,98 +234,103 @@ class _StoresListView extends StatelessWidget {
   final String desc;
   final bool isRemoveItems;
 
-  final foods = SpotlightBestTopFood.getPopularAllRestaurants();
-
-  _StoresListView({
-    Key key,
-    @required this.title,
-    @required this.desc,
+  const _StoresListView({
+    Key? key,
+    required this.title,
+    required this.desc,
     this.isRemoveItems = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final foods = [...SpotlightBestTopFood.popularAllRestaurants];
     if (isRemoveItems) {
       foods.removeRange(2, 4);
     }
-    return Container(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: _ListViewHeader(
-              title: title,
-              desc: desc,
-            ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: _ListViewHeader(
+            title: title,
+            desc: desc,
           ),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: foods.length,
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) => Container(
-              margin: const EdgeInsets.all(15.0),
-              child: Row(
-                children: <Widget>[
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: <BoxShadow>[
-                          BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 2.0,
-                          )
-                        ],
-                      ),
-                      child: Image.asset(
-                        foods[index].image,
-                        height: 80.0,
-                        width: 80.0,
-                        fit: BoxFit.fill,
-                      ),
+        ),
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: foods.length,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) => Container(
+            margin: const EdgeInsets.all(15.0),
+            child: Row(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 2.0,
+                        )
+                      ],
+                    ),
+                    child: Image.asset(
+                      foods[index].image,
+                      height: 80.0,
+                      width: 80.0,
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  UIHelper.horizontalSpaceSmall(),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(
-                        foods[index].name,
-                        style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 16.0),
-                      ),
-                      Text(foods[index].desc,
-                          style:
-                              Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.grey[800], fontSize: 13.5)),
-                      UIHelper.verticalSpaceSmall(),
-                      Text(
-                        foods[index].coupon,
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.red[900], fontSize: 13.0),
-                      ),
-                      Divider(),
-                      Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.fastfood,
-                            size: 14.0,
-                            color: Colors.green[400],
-                          ),
-                          UIHelper.horizontalSpaceSmall(),
-                          Text('200+ Items available')
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
+                ),
+                UIHelper.horizontalSpaceSmall,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text(
+                      foods[index].name,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(fontSize: 16.0),
+                    ),
+                    Text(foods[index].desc,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1!
+                            .copyWith(color: Colors.grey[800], fontSize: 13.5)),
+                    UIHelper.verticalSpaceSmall,
+                    Text(
+                      foods[index].coupon,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(color: Colors.red[900], fontSize: 13.0),
+                    ),
+                    const Divider(),
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.fastfood,
+                          size: 14.0,
+                          color: Colors.green[400],
+                        ),
+                        UIHelper.horizontalSpaceSmall,
+                        const Text('200+ Items available')
+                      ],
+                    )
+                  ],
+                )
+              ],
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
@@ -325,9 +340,9 @@ class _ListViewHeader extends StatelessWidget {
   final String desc;
 
   const _ListViewHeader({
-    Key key,
-    @required this.title,
-    @required this.desc,
+    Key? key,
+    required this.title,
+    required this.desc,
   }) : super(key: key);
 
   @override
@@ -342,17 +357,17 @@ class _ListViewHeader extends StatelessWidget {
               Icons.check_circle_outline,
               color: Colors.blue[300],
             ),
-            UIHelper.horizontalSpaceSmall(),
+            UIHelper.horizontalSpaceSmall,
             Text(
               title,
-              style: Theme.of(context).textTheme.subtitle2.copyWith(
+              style: Theme.of(context).textTheme.subtitle2!.copyWith(
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   ),
             ),
           ],
         ),
-        UIHelper.verticalSpaceExtraSmall(),
+        UIHelper.verticalSpaceExtraSmall,
         Text(desc)
       ],
     );

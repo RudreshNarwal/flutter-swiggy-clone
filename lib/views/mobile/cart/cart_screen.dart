@@ -5,6 +5,8 @@ import 'package:swiggy_ui/widgets/custom_divider_view.dart';
 import 'package:swiggy_ui/widgets/veg_badge_view.dart';
 
 class CartScreen extends StatelessWidget {
+  const CartScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +17,7 @@ class CartScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: const <Widget>[
                 _OrderView(),
                 CustomDividerView(dividerHeight: 15.0),
                 _CouponView(),
@@ -33,6 +35,8 @@ class CartScreen extends StatelessWidget {
 }
 
 class _OrderView extends StatefulWidget {
+  const _OrderView({Key? key}) : super(key: key);
+
   @override
   _OrderViewState createState() => _OrderViewState();
 }
@@ -53,28 +57,30 @@ class _OrderViewState extends State<_OrderView> {
                 height: 60.0,
                 width: 60.0,
               ),
-              UIHelper.horizontalSpaceSmall(),
+              UIHelper.horizontalSpaceSmall,
               Column(
                 children: <Widget>[
-                  Text('Breakfast Express', style: Theme.of(context).textTheme.subtitle2),
-                  UIHelper.verticalSpaceExtraSmall(),
-                  Text('OMR Perungudi', style: Theme.of(context).textTheme.bodyText1)
+                  Text('Breakfast Express',
+                      style: Theme.of(context).textTheme.subtitle2),
+                  UIHelper.verticalSpaceExtraSmall,
+                  Text('OMR Perungudi',
+                      style: Theme.of(context).textTheme.bodyText1)
                 ],
               )
             ],
           ),
-          UIHelper.verticalSpaceLarge(),
+          UIHelper.verticalSpaceLarge,
           Row(
             children: <Widget>[
-              VegBadgeView(),
-              UIHelper.horizontalSpaceSmall(),
+              const VegBadgeView(),
+              UIHelper.horizontalSpaceSmall,
               Flexible(
                 child: Text(
                   'Aloo Paratha with Curd and Pickle',
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
               ),
-              UIHelper.horizontalSpaceSmall(),
+              UIHelper.horizontalSpaceSmall,
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 height: 35.0,
@@ -88,7 +94,7 @@ class _OrderViewState extends State<_OrderView> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     InkWell(
-                      child: Icon(Icons.remove, color: Colors.green),
+                      child: const Icon(Icons.remove, color: Colors.green),
                       onTap: () {
                         if (cartCount > 0) {
                           setState(() {
@@ -97,11 +103,15 @@ class _OrderViewState extends State<_OrderView> {
                         }
                       },
                     ),
-                    Spacer(),
-                    Text('$cartCount', style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 16.0)),
-                    Spacer(),
+                    const Spacer(),
+                    Text('$cartCount',
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle2!
+                            .copyWith(fontSize: 16.0)),
+                    const Spacer(),
                     InkWell(
-                      child: Icon(Icons.add, color: Colors.green),
+                      child: const Icon(Icons.add, color: Colors.green),
                       onTap: () {
                         setState(() {
                           cartCount += 1;
@@ -111,29 +121,30 @@ class _OrderViewState extends State<_OrderView> {
                   ],
                 ),
               ),
-              UIHelper.horizontalSpaceSmall(),
+              UIHelper.horizontalSpaceSmall,
               Text(
                 'Rs125',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
           ),
-          UIHelper.verticalSpaceExtraLarge(),
+          UIHelper.verticalSpaceExtraLarge,
           CustomDividerView(
             dividerHeight: 1.0,
             color: Colors.grey[400],
           ),
-          UIHelper.verticalSpaceMedium(),
+          UIHelper.verticalSpaceMedium,
           Row(
             children: <Widget>[
               Icon(Icons.library_books, color: Colors.grey[700]),
-              UIHelper.horizontalSpaceSmall(),
-              Expanded(
-                child: Text('Any restaurant request? We will try our best to convey it'),
+              UIHelper.horizontalSpaceSmall,
+              const Expanded(
+                child: Text(
+                    'Any restaurant request? We will try our best to convey it'),
               )
             ],
           ),
-          UIHelper.verticalSpaceMedium(),
+          UIHelper.verticalSpaceMedium,
         ],
       ),
     );
@@ -141,6 +152,8 @@ class _OrderViewState extends State<_OrderView> {
 }
 
 class _CouponView extends StatelessWidget {
+  const _CouponView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -148,13 +161,14 @@ class _CouponView extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Icon(Icons.local_offer, size: 20.0, color: Colors.grey[700]),
-          UIHelper.horizontalSpaceMedium(),
+          UIHelper.horizontalSpaceMedium,
           Text(
             'APPLY COUPON',
-            style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 16.0),
+            style:
+                Theme.of(context).textTheme.subtitle2!.copyWith(fontSize: 16.0),
           ),
-          Spacer(),
-          Icon(Icons.keyboard_arrow_right, color: Colors.grey),
+          const Spacer(),
+          const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
         ],
       ),
     );
@@ -162,9 +176,12 @@ class _CouponView extends StatelessWidget {
 }
 
 class _BillDetailView extends StatelessWidget {
+  const _BillDetailView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 16.0);
+    final textStyle =
+        Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16.0);
 
     return Container(
       padding: const EdgeInsets.all(20.0),
@@ -173,9 +190,10 @@ class _BillDetailView extends StatelessWidget {
         children: <Widget>[
           Text(
             'Bill Details',
-            style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 17.0),
+            style:
+                Theme.of(context).textTheme.headline6!.copyWith(fontSize: 17.0),
           ),
-          UIHelper.verticalSpaceSmall(),
+          UIHelper.verticalSpaceSmall,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -183,7 +201,7 @@ class _BillDetailView extends StatelessWidget {
               Text('Rs 129.00', style: textStyle),
             ],
           ),
-          UIHelper.verticalSpaceMedium(),
+          UIHelper.verticalSpaceMedium,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -195,14 +213,17 @@ class _BillDetailView extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Text('Delivery Fee', style: textStyle),
-                        UIHelper.horizontalSpaceSmall(),
-                        Icon(Icons.info_outline, size: 14.0)
+                        UIHelper.horizontalSpaceSmall,
+                        const Icon(Icons.info_outline, size: 14.0)
                       ],
                     ),
-                    UIHelper.verticalSpaceSmall(),
+                    UIHelper.verticalSpaceSmall,
                     Text(
                       'Your Delivery Partner is travelling long distance to deliver your order',
-                      style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 13.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(fontSize: 13.0),
                     ),
                   ],
                 ),
@@ -210,7 +231,7 @@ class _BillDetailView extends StatelessWidget {
               Text('Rs 54.00', style: textStyle),
             ],
           ),
-          UIHelper.verticalSpaceLarge(),
+          UIHelper.verticalSpaceLarge,
           _buildDivider(),
           Container(
             alignment: Alignment.center,
@@ -218,9 +239,9 @@ class _BillDetailView extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Text('Taxes and Charges', style: textStyle),
-                UIHelper.horizontalSpaceSmall(),
-                Icon(Icons.info_outline, size: 14.0),
-                Spacer(),
+                UIHelper.horizontalSpaceSmall,
+                const Icon(Icons.info_outline, size: 14.0),
+                const Spacer(),
                 Text('Rs 26.67', style: textStyle),
               ],
             ),
@@ -232,7 +253,7 @@ class _BillDetailView extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Text('To Pay', style: Theme.of(context).textTheme.subtitle2),
-                Spacer(),
+                const Spacer(),
                 Text('Rs 210.00', style: textStyle),
               ],
             ),
@@ -249,6 +270,8 @@ class _BillDetailView extends StatelessWidget {
 }
 
 class _DecoratedView extends StatelessWidget {
+  const _DecoratedView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -259,127 +282,148 @@ class _DecoratedView extends StatelessWidget {
 }
 
 class _AddressPaymentView extends StatelessWidget {
+  const _AddressPaymentView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            height: 50.0,
-            color: Colors.black,
-            child: Row(
-              children: <Widget>[
-                Icon(Icons.phone, color: Colors.yellow[800]),
-                UIHelper.horizontalSpaceSmall(),
-                Expanded(
-                  child: Text(
-                    'Want your order left outside? Call delivery executive',
-                    style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.white),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.center,
-                      height: 60.0,
-                      width: 60.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 1.0,
-                        ),
-                      ),
-                      child: Icon(Icons.add_location, size: 30.0),
-                    ),
-                    Positioned(
-                      top: 0.0,
-                      right: 0.0,
-                      child: Icon(
-                        Icons.check_circle,
-                        color: Colors.green,
-                      ),
-                    )
-                  ],
-                ),
-                UIHelper.horizontalSpaceMedium(),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Deliver to Other',
-                        style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 16.0),
-                      ),
-                      Text(
-                        'Keelkattalai',
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.grey),
-                      ),
-                      UIHelper.verticalSpaceSmall(),
-                      Text(
-                        '43 MINS',
-                        style: Theme.of(context).textTheme.subtitle2,
-                      ),
-                    ],
-                  ),
-                ),
-                InkWell(
-                  child: Text(
-                    'ADD ADDRESS',
-                    style: Theme.of(context).textTheme.subtitle2.copyWith(color: darkOrange),
-                  ),
-                  onTap: () {},
-                ),
-                UIHelper.verticalSpaceMedium(),
-              ],
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 50.0,
+          color: Colors.black,
+          child: Row(
             children: <Widget>[
+              Icon(Icons.phone, color: Colors.yellow[800]),
+              UIHelper.horizontalSpaceSmall,
               Expanded(
-                child: Container(
-                  padding: const EdgeInsets.all(10.0),
-                  color: Colors.grey[200],
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Rs210.00',
-                        style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 16.0),
-                      ),
-                      UIHelper.verticalSpaceExtraSmall(),
-                      Text(
-                        'VIEW DETAIL BILL',
-                        style: Theme.of(context).textTheme.subtitle2.copyWith(color: Colors.blue, fontSize: 13.0),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10.0),
-                  color: Colors.green,
-                  height: 58.0,
-                  child: Text(
-                    'PROCEED TO PAY',
-                    style: Theme.of(context).textTheme.subtitle2.copyWith(color: Colors.white),
-                  ),
+                child: Text(
+                  'Want your order left outside? Call delivery executive',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .copyWith(color: Colors.white),
                 ),
               )
             ],
-          )
-        ],
-      ),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.all(20.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.center,
+                    height: 60.0,
+                    width: 60.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 1.0,
+                      ),
+                    ),
+                    child: const Icon(Icons.add_location, size: 30.0),
+                  ),
+                  const Positioned(
+                    top: 0.0,
+                    right: 0.0,
+                    child: Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                    ),
+                  )
+                ],
+              ),
+              UIHelper.horizontalSpaceMedium,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Deliver to Other',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(fontSize: 16.0),
+                    ),
+                    Text(
+                      'Keelkattalai',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(color: Colors.grey),
+                    ),
+                    UIHelper.verticalSpaceSmall,
+                    Text(
+                      '43 MINS',
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
+                  ],
+                ),
+              ),
+              InkWell(
+                child: Text(
+                  'ADD ADDRESS',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2!
+                      .copyWith(color: darkOrange),
+                ),
+                onTap: () {},
+              ),
+              UIHelper.verticalSpaceMedium,
+            ],
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                color: Colors.grey[200],
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Rs210.00',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(fontSize: 16.0),
+                    ),
+                    UIHelper.verticalSpaceExtraSmall,
+                    Text(
+                      'VIEW DETAIL BILL',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2!
+                          .copyWith(color: Colors.blue, fontSize: 13.0),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(10.0),
+                color: Colors.green,
+                height: 58.0,
+                child: Text(
+                  'PROCEED TO PAY',
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2!
+                      .copyWith(color: Colors.white),
+                ),
+              ),
+            )
+          ],
+        )
+      ],
     );
   }
 }

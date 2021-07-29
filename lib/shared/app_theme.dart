@@ -9,12 +9,12 @@ ThemeData appPrimaryTheme() => ThemeData(
       scaffoldBackgroundColor: Colors.white,
       buttonColor: appColor,
       cardColor: Colors.white,
-      snackBarTheme: SnackBarThemeData(
+      snackBarTheme: const SnackBarThemeData(
         backgroundColor: appColor,
         contentTextStyle: TextStyle(color: Colors.white),
         actionTextColor: Colors.white,
       ),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         brightness: Brightness.light,
         elevation: 1.0,
         actionsIconTheme: IconThemeData(
@@ -22,7 +22,7 @@ ThemeData appPrimaryTheme() => ThemeData(
         ),
       ),
       dividerColor: Colors.grey[300],
-      dividerTheme: DividerThemeData(thickness: 0.5),
+      dividerTheme: const DividerThemeData(thickness: 0.5),
       tabBarTheme: TabBarTheme(
         labelColor: Colors.black,
         unselectedLabelColor: Colors.grey,

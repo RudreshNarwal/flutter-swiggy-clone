@@ -5,10 +5,12 @@ import 'package:swiggy_ui/utils/ui_helper.dart';
 import 'indian_delight_screen.dart';
 
 class IndianFoodView extends StatelessWidget {
-  final restaurants = IndianFood.getIndianRestaurants();
+  const IndianFoodView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const restaurants = IndianFood.indianRestaurants;
+
     return Container(
       margin: const EdgeInsets.all(15.0),
       height: 150.0,
@@ -31,12 +33,12 @@ class IndianFoodView extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                UIHelper.verticalSpaceExtraSmall(),
+                UIHelper.verticalSpaceExtraSmall,
                 Text(
                   restaurants[index].name,
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle2
+                      .subtitle2!
                       .copyWith(color: Colors.grey[700]),
                 )
               ],
@@ -46,7 +48,7 @@ class IndianFoodView extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => IndianDelightScreen(),
+                builder: (context) => const IndianDelightScreen(),
               ),
             );
           },

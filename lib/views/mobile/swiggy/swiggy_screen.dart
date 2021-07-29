@@ -21,57 +21,57 @@ import 'top_offer_view.dart';
 import 'top_picks_for_you_view.dart';
 
 class SwiggyScreen extends StatelessWidget {
+  const SwiggyScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              _buildAppBar(context),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      FoodGroceriesAvailabilityView(),
-                      TopPicksForYouView(),
-                      OfferBannerView(),
-                      CustomDividerView(),
-                      IndianFoodView(),
-                      CustomDividerView(),
-                      InTheSpotlightView(),
-                      CustomDividerView(),
-                      PopularBrandsView(),
-                      CustomDividerView(),
-                      SwiggySafetyBannerView(),
-                      BestInSafetyViews(),
-                      CustomDividerView(),
-                      TopOffersViews(),
-                      CustomDividerView(),
-                      GenieView(),
-                      CustomDividerView(),
-                      PopularCategoriesView(),
-                      CustomDividerView(),
-                      RestaurantVerticalListView(
-                        title: 'Popular Restaurants',
-                        restaurants: SpotlightBestTopFood.getPopularAllRestaurants(),
-                      ),
-                      CustomDividerView(),
-                      RestaurantVerticalListView(
-                        title: 'All Restaurants Nearby',
-                        restaurants: SpotlightBestTopFood.getPopularAllRestaurants(),
-                        isAllRestaurantNearby: true,
-                      ),
-                      SeeAllRestaurantBtn(),
-                      LiveForFoodView(),
-                    ],
-                  ),
+        child: Column(
+          children: <Widget>[
+            _buildAppBar(context),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: const <Widget>[
+                    FoodGroceriesAvailabilityView(),
+                    TopPicksForYouView(),
+                    OfferBannerView(),
+                    CustomDividerView(),
+                    IndianFoodView(),
+                    CustomDividerView(),
+                    InTheSpotlightView(),
+                    CustomDividerView(),
+                    PopularBrandsView(),
+                    CustomDividerView(),
+                    SwiggySafetyBannerView(),
+                    BestInSafetyViews(),
+                    CustomDividerView(),
+                    TopOffersViews(),
+                    CustomDividerView(),
+                    GenieView(),
+                    CustomDividerView(),
+                    PopularCategoriesView(),
+                    CustomDividerView(),
+                    RestaurantVerticalListView(
+                      title: 'Popular Restaurants',
+                      restaurants: SpotlightBestTopFood.popularAllRestaurants,
+                    ),
+                    CustomDividerView(),
+                    RestaurantVerticalListView(
+                      title: 'All Restaurants Nearby',
+                      restaurants: SpotlightBestTopFood.popularAllRestaurants,
+                      isAllRestaurantNearby: true,
+                    ),
+                    SeeAllRestaurantBtn(),
+                    LiveForFoodView(),
+                  ],
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -84,29 +84,35 @@ class SwiggyScreen extends StatelessWidget {
           children: <Widget>[
             Text(
               'Other',
-              style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 21.0),
+              style: Theme.of(context)
+                  .textTheme
+                  .headline4!
+                  .copyWith(fontSize: 21.0),
             ),
-            UIHelper.horizontalSpaceExtraSmall(),
-            Padding(
-              padding: const EdgeInsets.only(top: 4.0),
+            UIHelper.horizontalSpaceExtraSmall,
+            const Padding(
+              padding: EdgeInsets.only(top: 4.0),
               child: Icon(Icons.keyboard_arrow_down),
             ),
-            Spacer(),
-            Icon(Icons.local_offer),
-            UIHelper.horizontalSpaceExtraSmall(),
+            const Spacer(),
+            const Icon(Icons.local_offer),
+            UIHelper.horizontalSpaceExtraSmall,
             InkWell(
               child: Container(
                 padding: const EdgeInsets.all(5.0),
                 child: Text(
                   'Offer',
-                  style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 18.0),
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2!
+                      .copyWith(fontSize: 18.0),
                 ),
               ),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => OffersScreen(),
+                    builder: (context) => const OffersScreen(),
                   ),
                 );
               },
@@ -118,7 +124,7 @@ class SwiggyScreen extends StatelessWidget {
 
 class SeeAllRestaurantBtn extends StatelessWidget {
   const SeeAllRestaurantBtn({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -134,7 +140,10 @@ class SeeAllRestaurantBtn extends StatelessWidget {
         color: darkOrange,
         child: Text(
           'See all restaurants',
-          style: Theme.of(context).textTheme.subtitle2.copyWith(color: Colors.white, fontSize: 19.0),
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2!
+              .copyWith(color: Colors.white, fontSize: 19.0),
         ),
         onPressed: isTabletDesktop
             ? () {}
@@ -142,7 +151,7 @@ class SeeAllRestaurantBtn extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AllRestaurantsScreen(),
+                    builder: (context) => const AllRestaurantsScreen(),
                   ),
                 );
               },
@@ -153,7 +162,7 @@ class SeeAllRestaurantBtn extends StatelessWidget {
 
 class LiveForFoodView extends StatelessWidget {
   const LiveForFoodView({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -171,23 +180,29 @@ class LiveForFoodView extends StatelessWidget {
             children: <Widget>[
               Text(
                 'LIVE\nFOR\nFOOD',
-                style: Theme.of(context).textTheme.headline4.copyWith(
+                style: Theme.of(context).textTheme.headline4!.copyWith(
                       color: Colors.grey[400],
                       fontSize: 80.0,
                       letterSpacing: 0.2,
                       height: 0.8,
                     ),
               ),
-              UIHelper.verticalSpaceLarge(),
+              UIHelper.verticalSpaceLarge,
               Text(
                 'MADE BY FOOD LOVERS',
-                style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.grey),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: Colors.grey),
               ),
               Text(
                 'SWIGGY HQ, BANGALORE',
-                style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.grey),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(color: Colors.grey),
               ),
-              UIHelper.verticalSpaceExtraLarge(),
+              UIHelper.verticalSpaceExtraLarge,
               Row(
                 children: <Widget>[
                   Container(

@@ -5,13 +5,15 @@ import 'package:swiggy_ui/widgets/custom_divider_view.dart';
 import 'package:swiggy_ui/widgets/dotted_seperator_view.dart';
 
 class AccountScreen extends StatelessWidget {
-  final List<String> titles = [
+  const AccountScreen({Key? key}) : super(key: key);
+
+  static const List<String> titles = [
     'My Account',
     'SUPER Expired',
     'Swiggy Money',
     'Help',
   ];
-  final List<String> body = [
+  static const List<String> body = [
     'Address, Payments, Favourties, Referrals & Offers',
     'You had a great savings run. Get SUPER again',
     'Balance & Transactions',
@@ -30,7 +32,7 @@ class AccountScreen extends StatelessWidget {
               ListView.builder(
                 shrinkWrap: true,
                 itemCount: titles.length,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) => _ListItem(
                   title: titles[index],
                   body: body[index],
@@ -44,7 +46,10 @@ class AccountScreen extends StatelessWidget {
                 color: Colors.grey[200],
                 child: Text(
                   'PAST ORDERS',
-                  style: Theme.of(context).textTheme.subtitle2.copyWith(color: Colors.grey[700], fontSize: 12.0),
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle2!
+                      .copyWith(color: Colors.grey[700], fontSize: 12.0),
                 ),
               ),
               _PastOrderListView(),
@@ -70,22 +75,28 @@ class _AppBar extends StatelessWidget {
             children: <Widget>[
               Text(
                 'VINOTH',
-                style: Theme.of(context).textTheme.headline6.copyWith(fontWeight: FontWeight.bold, fontSize: 18.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6!
+                    .copyWith(fontWeight: FontWeight.bold, fontSize: 18.0),
               ),
               InkWell(
                 child: Text(
                   'EDIT',
-                  style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 17.0, color: darkOrange),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(fontSize: 17.0, color: darkOrange),
                 ),
                 onTap: () {},
               )
             ],
           ),
-          UIHelper.verticalSpaceSmall(),
+          UIHelper.verticalSpaceSmall,
           Row(
             children: <Widget>[
               Text('8870123456', style: subtitleStyle),
-              UIHelper.horizontalSpaceSmall(),
+              UIHelper.horizontalSpaceSmall,
               ClipOval(
                 child: Container(
                   height: 3.0,
@@ -93,12 +104,12 @@ class _AppBar extends StatelessWidget {
                   color: Colors.grey[700],
                 ),
               ),
-              UIHelper.horizontalSpaceSmall(),
+              UIHelper.horizontalSpaceSmall,
               Text('vinothvino@icloud.com', style: subtitleStyle)
             ],
           ),
-          UIHelper.verticalSpaceLarge(),
-          CustomDividerView(
+          UIHelper.verticalSpaceLarge,
+          const CustomDividerView(
             dividerHeight: 1.8,
             color: Colors.black,
           )
@@ -110,9 +121,9 @@ class _AppBar extends StatelessWidget {
 
 class _ListItem extends StatelessWidget {
   const _ListItem({
-    Key key,
-    @required this.title,
-    @required this.body,
+    Key? key,
+    required this.title,
+    required this.body,
     this.isLastItem = false,
   })  : assert(title != '', body != ''),
         super(key: key);
@@ -139,25 +150,31 @@ class _ListItem extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       title,
-                      style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 15.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(fontSize: 15.0),
                     ),
-                    UIHelper.verticalSpaceExtraSmall(),
+                    UIHelper.verticalSpaceExtraSmall,
                     Text(
                       body,
-                      style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 13.0, color: Colors.black),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(fontSize: 13.0, color: Colors.black),
                     ),
                   ],
                 ),
               ),
-              Spacer(),
-              UIHelper.horizontalSpaceSmall(),
-              Icon(Icons.keyboard_arrow_right)
+              const Spacer(),
+              UIHelper.horizontalSpaceSmall,
+              const Icon(Icons.keyboard_arrow_right)
             ],
           ),
-          UIHelper.verticalSpaceLarge(),
+          UIHelper.verticalSpaceLarge,
           isLastItem
-              ? SizedBox()
-              : CustomDividerView(
+              ? const SizedBox()
+              : const CustomDividerView(
                   dividerHeight: 0.8,
                   color: Colors.black26,
                 ),
@@ -189,7 +206,7 @@ class _PastOrderListView extends StatelessWidget {
         ListView.builder(
           shrinkWrap: true,
           itemCount: restaurants.length,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) => _PastOrdersListItemView(
             restaurant: restaurants[index],
             foodItem: foods[index],
@@ -198,12 +215,15 @@ class _PastOrderListView extends StatelessWidget {
         FlatButton(
           child: Text(
             'VIEW MORE ORDERS',
-            style: Theme.of(context).textTheme.subtitle2.copyWith(color: darkOrange),
+            style: Theme.of(context)
+                .textTheme
+                .subtitle2!
+                .copyWith(color: darkOrange),
           ),
           onPressed: () {},
         ),
-        UIHelper.verticalSpaceSmall(),
-        CustomDividerView(),
+        UIHelper.verticalSpaceSmall,
+        const CustomDividerView(),
         Row(
           children: <Widget>[
             Container(
@@ -212,12 +232,15 @@ class _PastOrderListView extends StatelessWidget {
               height: 50.0,
               child: Text(
                 'LOGOUT',
-                style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 16.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle2!
+                    .copyWith(fontSize: 16.0),
               ),
             ),
-            Spacer(),
-            Icon(Icons.power_settings_new),
-            UIHelper.horizontalSpaceSmall(),
+            const Spacer(),
+            const Icon(Icons.power_settings_new),
+            UIHelper.horizontalSpaceSmall,
           ],
         ),
         Container(
@@ -227,7 +250,10 @@ class _PastOrderListView extends StatelessWidget {
           color: Colors.grey[200],
           child: Text(
             'App Version v1.0.1',
-            style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.grey[700], fontSize: 13.0),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1!
+                .copyWith(color: Colors.grey[700], fontSize: 13.0),
           ),
         )
       ],
@@ -237,9 +263,9 @@ class _PastOrderListView extends StatelessWidget {
 
 class _PastOrdersListItemView extends StatelessWidget {
   const _PastOrdersListItemView({
-    Key key,
-    @required this.restaurant,
-    @required this.foodItem,
+    Key? key,
+    required this.restaurant,
+    required this.foodItem,
   })  : assert(restaurant != '', foodItem != ''),
         super(key: key);
 
@@ -267,44 +293,49 @@ class _PastOrdersListItemView extends StatelessWidget {
                       restaurant,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
-                    UIHelper.verticalSpaceExtraSmall(),
+                    UIHelper.verticalSpaceExtraSmall,
                     Text(
                       'Medavakkam',
-                      style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 12.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1!
+                          .copyWith(fontSize: 12.0),
                     ),
-                    UIHelper.verticalSpaceSmall(),
+                    UIHelper.verticalSpaceSmall,
                     Row(
                       children: <Widget>[
-                        Text('Rs112'),
-                        UIHelper.horizontalSpaceExtraSmall(),
-                        Icon(Icons.keyboard_arrow_right, color: Colors.grey[600])
+                        const Text('Rs112'),
+                        UIHelper.horizontalSpaceExtraSmall,
+                        Icon(Icons.keyboard_arrow_right,
+                            color: Colors.grey[600])
                       ],
                     )
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 Text('Delivered', style: Theme.of(context).textTheme.subtitle2),
-                UIHelper.horizontalSpaceSmall(),
+                UIHelper.horizontalSpaceSmall,
                 ClipOval(
                   child: Container(
                     padding: const EdgeInsets.all(2.2),
                     color: Colors.green,
-                    child: Icon(Icons.check, color: Colors.white, size: 14.0),
+                    child: const Icon(Icons.check,
+                        color: Colors.white, size: 14.0),
                   ),
                 )
               ],
             ),
           ),
-          UIHelper.verticalSpaceSmall(),
-          DottedSeperatorView(),
-          UIHelper.verticalSpaceMedium(),
+          UIHelper.verticalSpaceSmall,
+          const DottedSeperatorView(),
+          UIHelper.verticalSpaceMedium,
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(foodItem),
-              UIHelper.verticalSpaceExtraSmall(),
-              Text('July 14, 2:11 AM'),
-              UIHelper.verticalSpaceSmall(),
+              UIHelper.verticalSpaceExtraSmall,
+              const Text('July 14, 2:11 AM'),
+              UIHelper.verticalSpaceSmall,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -317,38 +348,47 @@ class _PastOrdersListItemView extends StatelessWidget {
                           borderSide: BorderSide(width: 1.5, color: darkOrange),
                           child: Text(
                             'REORDER',
-                            style: Theme.of(context).textTheme.subtitle2.copyWith(color: darkOrange),
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2!
+                                .copyWith(color: darkOrange),
                           ),
                           onPressed: () {},
                         ),
-                        UIHelper.verticalSpaceMedium(),
-                        Text('Delivery rating not\napplicable for this order', maxLines: 2)
+                        UIHelper.verticalSpaceMedium,
+                        const Text(
+                            'Delivery rating not\napplicable for this order',
+                            maxLines: 2)
                       ],
                     ),
                   ),
-                  UIHelper.horizontalSpaceMedium(),
+                  UIHelper.horizontalSpaceMedium,
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         OutlineButton(
                           color: darkOrange,
-                          borderSide: BorderSide(width: 1.5, color: Colors.black),
+                          borderSide:
+                              const BorderSide(width: 1.5, color: Colors.black),
                           child: Text(
                             'RATE FOOD',
-                            style: Theme.of(context).textTheme.subtitle2.copyWith(color: Colors.black),
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2!
+                                .copyWith(color: Colors.black),
                           ),
                           onPressed: () {},
                         ),
-                        UIHelper.verticalSpaceMedium(),
-                        Text("You haven't rated\nthis food yet")
+                        UIHelper.verticalSpaceMedium,
+                        const Text("You haven't rated\nthis food yet")
                       ],
                     ),
                   )
                 ],
               ),
-              UIHelper.verticalSpaceMedium(),
-              CustomDividerView(dividerHeight: 1.5, color: Colors.black)
+              UIHelper.verticalSpaceMedium,
+              const CustomDividerView(dividerHeight: 1.5, color: Colors.black)
             ],
           )
         ],

@@ -9,6 +9,8 @@ import 'genie/genie_grocery_card_view.dart';
 import 'meat/meat_screen.dart';
 
 class FoodGroceriesAvailabilityView extends StatelessWidget {
+  const FoodGroceriesAvailabilityView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final isTabletDesktop = Responsive.isTabletDesktop(context);
@@ -21,7 +23,7 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
             Row(
               children: <Widget>[
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(8.0),
                     bottomRight: Radius.circular(8.0),
                   ),
@@ -31,7 +33,7 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                     color: swiggyOrange,
                   ),
                 ),
-                UIHelper.horizontalSpaceMedium(),
+                UIHelper.horizontalSpaceMedium,
                 Flexible(
                   child: Column(
                     children: <Widget>[
@@ -39,11 +41,11 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                         'We are now deliverying food groceries and other essentials.',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      UIHelper.verticalSpaceSmall(),
+                      UIHelper.verticalSpaceSmall,
                       Text(
                         'Food & Genie service (Mon-Sat)-6:00 am to 9:00pm. Groceries & Meat (Mon-Sat)-6:00 am to 6:00pm. Dairy (Mon-Sat)-6:00 am to 6:00pm (Sun)-6:00 am to 12:00 pm',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
                               fontSize: 16.0,
                               color: Colors.grey[800],
                             ),
@@ -53,7 +55,7 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                 )
               ],
             ),
-          if (!isTabletDesktop) UIHelper.verticalSpaceLarge(),
+          if (!isTabletDesktop) UIHelper.verticalSpaceLarge,
           Stack(
             children: <Widget>[
               ClipRRect(
@@ -76,19 +78,25 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                                 children: <Widget>[
                                   Text(
                                     'Restaurants',
-                                    style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4!
+                                        .copyWith(color: Colors.white),
                                   ),
-                                  UIHelper.verticalSpaceExtraSmall(),
+                                  UIHelper.verticalSpaceExtraSmall,
                                   Text(
                                     'No-contact delivery available',
-                                    style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.white),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText1!
+                                        .copyWith(color: Colors.white),
                                   )
                                 ],
                               ),
                             ),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Container(
                           height: 45.0,
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -97,11 +105,14 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                             children: <Widget>[
                               Text(
                                 'View all',
-                                style:
-                                    Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.white, fontSize: 18.0),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        color: Colors.white, fontSize: 18.0),
                               ),
-                              UIHelper.horizontalSpaceSmall(),
-                              Icon(
+                              UIHelper.horizontalSpaceSmall,
+                              const Icon(
                                 Icons.arrow_forward,
                                 color: Colors.white,
                                 size: 18.0,
@@ -118,7 +129,8 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AllRestaurantsScreen(),
+                              builder: (context) =>
+                                  const AllRestaurantsScreen(),
                             ),
                           );
                         },
@@ -138,7 +150,7 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
               ),
             ],
           ),
-          UIHelper.verticalSpaceMedium(),
+          UIHelper.verticalSpaceMedium,
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -152,7 +164,7 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GenieScreen(),
+                            builder: (context) => const GenieScreen(),
                           ),
                         );
                       },
@@ -167,7 +179,7 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GenieScreen(),
+                            builder: (context) => const GenieScreen(),
                           ),
                         );
                       },
@@ -182,7 +194,7 @@ class FoodGroceriesAvailabilityView extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => MeatScreen(),
+                            builder: (context) => const MeatScreen(),
                           ),
                         );
                       },

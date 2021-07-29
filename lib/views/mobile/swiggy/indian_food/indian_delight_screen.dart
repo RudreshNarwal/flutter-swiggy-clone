@@ -4,6 +4,8 @@ import 'package:swiggy_ui/utils/ui_helper.dart';
 import '../groceries/grocery_screen.dart';
 
 class IndianDelightScreen extends StatelessWidget {
+  const IndianDelightScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +22,7 @@ class IndianDelightScreen extends StatelessWidget {
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
-                  UIHelper.verticalSpaceMedium(),
+                  UIHelper.verticalSpaceMedium,
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Column(
@@ -28,16 +30,20 @@ class IndianDelightScreen extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           'SOUTH INDIAN DELIGHTS',
-                          style: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 19.0),
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2!
+                              .copyWith(fontSize: 19.0),
                         ),
-                        UIHelper.verticalSpaceSmall(),
-                        Text('Feast on authentic South Indian fare from top restaurants near you'),
-                        UIHelper.verticalSpaceSmall(),
-                        Divider(),
+                        UIHelper.verticalSpaceSmall,
+                        const Text(
+                            'Feast on authentic South Indian fare from top restaurants near you'),
+                        UIHelper.verticalSpaceSmall,
+                        const Divider(),
                       ],
                     ),
                   ),
-                  GroceryListView(
+                  const GroceryListView(
                     title: 'SEE ALL RESTAURANTS',
                   ),
                 ],
@@ -48,7 +54,7 @@ class IndianDelightScreen extends StatelessWidget {
             top: 10.0,
             left: 2.4,
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
                 size: 28.0,
                 color: Colors.white,
