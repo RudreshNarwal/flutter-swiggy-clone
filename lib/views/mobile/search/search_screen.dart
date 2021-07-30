@@ -6,12 +6,15 @@ import 'package:swiggy_ui/widgets/custom_divider_view.dart';
 import 'package:swiggy_ui/widgets/mobile/search_food_list_item_view.dart';
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({Key? key}) : super(key: key);
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> with SingleTickerProviderStateMixin {
-  TabController _tabController;
+class _SearchScreenState extends State<SearchScreen>
+    with SingleTickerProviderStateMixin {
+  TabController? _tabController;
 
   @override
   void initState() {
@@ -22,7 +25,7 @@ class _SearchScreenState extends State<SearchScreen> with SingleTickerProviderSt
   @override
   void dispose() {
     super.dispose();
-    _tabController.dispose();
+    _tabController!.dispose();
   }
 
   @override
@@ -35,9 +38,10 @@ class _SearchScreenState extends State<SearchScreen> with SingleTickerProviderSt
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                padding: const EdgeInsets.only(left: 15.0, top: 2.0, bottom: 2.0),
+                padding:
+                    const EdgeInsets.only(left: 15.0, top: 2.0, bottom: 2.0),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey[400]),
+                  border: Border.all(color: Colors.grey[400]!),
                   borderRadius: BorderRadius.circular(2.0),
                 ),
                 child: Row(
@@ -46,36 +50,41 @@ class _SearchScreenState extends State<SearchScreen> with SingleTickerProviderSt
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Search for restaurants and food',
-                          hintStyle: Theme.of(context).textTheme.subtitle2.copyWith(
-                                color: Colors.grey,
-                                fontSize: 17.0,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          hintStyle:
+                              Theme.of(context).textTheme.subtitle2!.copyWith(
+                                    color: Colors.grey,
+                                    fontSize: 17.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                           border: InputBorder.none,
                         ),
                       ),
                     ),
-                    UIHelper.horizontalSpaceMedium(),
+                    UIHelper.horizontalSpaceMedium,
                     IconButton(
-                      icon: Icon(Icons.search),
+                      icon: const Icon(Icons.search),
                       onPressed: () {},
                     )
                   ],
                 ),
               ),
-              UIHelper.verticalSpaceExtraSmall(),
+              UIHelper.verticalSpaceExtraSmall,
               TabBar(
                 unselectedLabelColor: Colors.grey,
                 labelColor: Colors.black,
                 controller: _tabController,
                 indicatorColor: darkOrange,
-                labelStyle: Theme.of(context).textTheme.subtitle2.copyWith(fontSize: 18.0, color: darkOrange),
-                unselectedLabelStyle: Theme.of(context).textTheme.subtitle2.copyWith(
-                      fontSize: 18.0,
-                      color: Colors.grey[200],
-                    ),
+                labelStyle: Theme.of(context)
+                    .textTheme
+                    .subtitle2!
+                    .copyWith(fontSize: 18.0, color: darkOrange),
+                unselectedLabelStyle:
+                    Theme.of(context).textTheme.subtitle2!.copyWith(
+                          fontSize: 18.0,
+                          color: Colors.grey[200],
+                        ),
                 indicatorSize: TabBarIndicatorSize.tab,
-                tabs: [
+                tabs: const [
                   Tab(
                     child: Text('Restaurant'),
                   ),
@@ -84,12 +93,12 @@ class _SearchScreenState extends State<SearchScreen> with SingleTickerProviderSt
                   ),
                 ],
               ),
-              UIHelper.verticalSpaceSmall(),
-              CustomDividerView(dividerHeight: 8.0),
+              UIHelper.verticalSpaceSmall,
+              const CustomDividerView(dividerHeight: 8.0),
               Expanded(
                 child: TabBarView(
                   controller: _tabController,
-                  children: [
+                  children: const [
                     _SearchListView(),
                     _SearchListView(),
                   ],
@@ -104,12 +113,12 @@ class _SearchScreenState extends State<SearchScreen> with SingleTickerProviderSt
 }
 
 class _SearchListView extends StatelessWidget {
-  final List<SpotlightBestTopFood> foods = SpotlightBestTopFood.getPopularAllRestaurants();
-
+  const _SearchListView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    foods.addAll(SpotlightBestTopFood.getPopularAllRestaurants());
-    foods.shuffle();
+    final List<SpotlightBestTopFood> foods = [
+      ...SpotlightBestTopFood.popularAllRestaurants
+    ]..shuffle();
 
     return ListView.builder(
       shrinkWrap: true,

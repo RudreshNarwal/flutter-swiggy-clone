@@ -1,38 +1,37 @@
 import 'package:flutter/material.dart';
 
 class UIHelper {
-  static const double _VerticalSpaceExtraSmall = 4.0;
-  static const double _VerticalSpaceSmall = 8.0;
-  static const double _VerticalSpaceMedium = 16.0;
-  static const double _VerticalSpaceLarge = 24.0;
-  static const double _VerticalSpaceExtraLarge = 48;
+  static const double _verticalSpaceExtraSmall = 4.0;
+  static const double _verticalSpaceSmall = 8.0;
+  static const double _verticalSpaceMedium = 16.0;
+  static const double _verticalSpaceLarge = 24.0;
+  static const double _verticalSpaceExtraLarge = 48;
 
-  static const double _HorizontalSpaceExtraSmall = 4;
-  static const double _HorizontalSpaceSmall = 8.0;
-  static const double _HorizontalSpaceMedium = 16.0;
-  static const double _HorizontalSpaceLarge = 24.0;
-  static const double _HorizontalSpaceExtraLarge = 48.0;
+  static const double _horizontalSpaceExtraSmall = 4;
+  static const double _horizontalSpaceSmall = 8.0;
+  static const double _horizontalSpaceMedium = 16.0;
+  static const double _horizontalSpaceLarge = 24.0;
+  static const double _horizontalSpaceExtraLarge = 48.0;
 
-  static SizedBox verticalSpaceExtraSmall() =>
-      verticalSpace(_VerticalSpaceExtraSmall);
-  static SizedBox verticalSpaceSmall() => verticalSpace(_VerticalSpaceSmall);
-  static SizedBox verticalSpaceMedium() => verticalSpace(_VerticalSpaceMedium);
-  static SizedBox verticalSpaceLarge() => verticalSpace(_VerticalSpaceLarge);
-  static SizedBox verticalSpaceExtraLarge() =>
-      verticalSpace(_VerticalSpaceExtraLarge);
+  static const SizedBox verticalSpaceExtraSmall =
+      SizedBox(height: _verticalSpaceExtraSmall);
+  static const SizedBox verticalSpaceSmall =
+      SizedBox(height: _verticalSpaceSmall);
+  static const SizedBox verticalSpaceMedium =
+      SizedBox(height: _verticalSpaceMedium);
+  static const SizedBox verticalSpaceLarge =
+      SizedBox(height: _verticalSpaceLarge);
+  static const SizedBox verticalSpaceExtraLarge =
+      SizedBox(height: _verticalSpaceExtraLarge);
 
-  static SizedBox verticalSpace(double height) => SizedBox(height: height);
-
-  static SizedBox horizontalSpaceExtraSmall() =>
-      horizontalSpace(_HorizontalSpaceExtraSmall);
-  static SizedBox horizontalSpaceSmall() =>
-      horizontalSpace(_HorizontalSpaceSmall);
-  static SizedBox horizontalSpaceMedium() =>
-      horizontalSpace(_HorizontalSpaceMedium);
-  static SizedBox horizontalSpaceLarge() =>
-      horizontalSpace(_HorizontalSpaceLarge);
-  static SizedBox horizontalSpaceExtraLarge() =>
-      horizontalSpace(_HorizontalSpaceExtraLarge);
-
-  static SizedBox horizontalSpace(double width) => SizedBox(width: width);
+  static const SizedBox horizontalSpaceExtraSmall =
+      SizedBox(width: _horizontalSpaceExtraSmall);
+  static const SizedBox horizontalSpaceSmall =
+      SizedBox(width: _horizontalSpaceSmall);
+  static const SizedBox horizontalSpaceMedium =
+      SizedBox(width: _horizontalSpaceMedium);
+  static const SizedBox horizontalSpaceLarge =
+      SizedBox(width: _horizontalSpaceLarge);
+  static const SizedBox horizontalSpaceExtraLarge =
+      SizedBox(width: _horizontalSpaceExtraLarge);
 }

@@ -3,10 +3,11 @@ import 'package:swiggy_ui/models/popular_category.dart';
 import 'package:swiggy_ui/utils/ui_helper.dart';
 
 class PopularCategoriesView extends StatelessWidget {
-  final categories = PopularCategory.getPopularCategories();
+  const PopularCategoriesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const categories = PopularCategory.popularCategories;
     return Container(
       alignment: Alignment.topLeft,
       margin: const EdgeInsets.all(10.0),
@@ -16,9 +17,10 @@ class PopularCategoriesView extends StatelessWidget {
         children: <Widget>[
           Text(
             'Popular Categories',
-            style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 20.0),
+            style:
+                Theme.of(context).textTheme.headline4!.copyWith(fontSize: 20.0),
           ),
-          UIHelper.verticalSpaceMedium(),
+          UIHelper.verticalSpaceMedium,
           LimitedBox(
             maxHeight: 124.0,
             child: ListView.builder(
@@ -49,7 +51,7 @@ class PopularCategoriesView extends StatelessWidget {
                               width: 40.0,
                               fit: BoxFit.cover,
                             ),
-                            UIHelper.verticalSpaceSmall(),
+                            UIHelper.verticalSpaceSmall,
                             Text(
                               categories[index].name,
                               maxLines: 2,

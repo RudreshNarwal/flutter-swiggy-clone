@@ -4,25 +4,30 @@ import 'package:swiggy_ui/utils/ui_helper.dart';
 import 'package:swiggy_ui/views/mobile/swiggy/restaurants/restaurant_detail_screen.dart';
 
 class TopPicksForYouView extends StatelessWidget {
-  final foods = TopPicksFood.getTopPicksfoods();
+  const TopPicksForYouView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const foods = TopPicksFood.topPicksfoods;
+
     return Container(
       margin: const EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
           Row(
             children: <Widget>[
-              Icon(Icons.thumb_up, size: 20.0),
-              UIHelper.horizontalSpaceSmall(),
+              const Icon(Icons.thumb_up, size: 20.0),
+              UIHelper.horizontalSpaceSmall,
               Text(
                 'Top Picks For You',
-                style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 20.0),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline4!
+                    .copyWith(fontSize: 20.0),
               )
             ],
           ),
-          UIHelper.verticalSpaceLarge(),
+          UIHelper.verticalSpaceLarge,
           LimitedBox(
             maxHeight: 188.0,
             child: ListView.builder(
@@ -34,7 +39,7 @@ class TopPicksForYouView extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => RestaurantDetailScreen(),
+                      builder: (context) => const RestaurantDetailScreen(),
                     ),
                   );
                 },
@@ -48,7 +53,7 @@ class TopPicksForYouView extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: <BoxShadow>[
+                          boxShadow: const <BoxShadow>[
                             BoxShadow(
                               color: Colors.grey,
                               blurRadius: 2.0,
@@ -62,22 +67,23 @@ class TopPicksForYouView extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      UIHelper.verticalSpaceSmall(),
+                      UIHelper.verticalSpaceSmall,
                       Flexible(
                         child: Text(
                           foods[index].name,
                           maxLines: 2,
-                          style: Theme.of(context).textTheme.subtitle2.copyWith(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.subtitle2!.copyWith(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                         ),
                       ),
-                      UIHelper.verticalSpaceExtraSmall(),
+                      UIHelper.verticalSpaceExtraSmall,
                       Text(
                         foods[index].minutes,
                         maxLines: 1,
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
                               color: Colors.grey[700],
                               fontSize: 13.0,
                             ),

@@ -5,7 +5,7 @@ import 'package:swiggy_ui/utils/ui_helper.dart';
 import 'package:swiggy_ui/widgets/mobile/spotlight_best_top_food_item.dart';
 
 class TopOffersViews extends StatelessWidget {
-  final restaurants = SpotlightBestTopFood.getTopRestaurants();
+  const TopOffersViews({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,27 +21,33 @@ class TopOffersViews extends StatelessWidget {
               children: <Widget>[
                 Row(
                   children: <Widget>[
-                    Icon(Icons.security),
-                    UIHelper.horizontalSpaceExtraSmall(),
+                    const Icon(Icons.security),
+                    UIHelper.horizontalSpaceExtraSmall,
                     Text(
                       'Top Offers',
-                      style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 20.0),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline4!
+                          .copyWith(fontSize: 20.0),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       children: <Widget>[
                         Text(
                           'SEE ALL',
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.bold),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .copyWith(fontWeight: FontWeight.bold),
                         ),
-                        UIHelper.horizontalSpaceExtraSmall(),
+                        UIHelper.horizontalSpaceExtraSmall,
                         ClipOval(
                           child: Container(
                             alignment: Alignment.center,
                             color: swiggyOrange,
                             height: 25.0,
                             width: 25.0,
-                            child: Icon(
+                            child: const Icon(
                               Icons.arrow_forward_ios,
                               size: 12.0,
                               color: Colors.white,
@@ -52,28 +58,35 @@ class TopOffersViews extends StatelessWidget {
                     )
                   ],
                 ),
-                UIHelper.verticalSpaceExtraSmall(),
+                UIHelper.verticalSpaceExtraSmall,
                 Text(
                   'Get 20-50% Off',
-                  style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.grey),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1!
+                      .copyWith(color: Colors.grey),
                 ),
               ],
             ),
           ),
-          UIHelper.verticalSpaceMedium(),
+          UIHelper.verticalSpaceMedium,
           LimitedBox(
             maxHeight: 270.0,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemCount: restaurants.length,
-              itemBuilder: (context, index) => Container(
+              itemCount: SpotlightBestTopFood.topRestaurants.length,
+              itemBuilder: (context, index) => SizedBox(
                 width: MediaQuery.of(context).size.width / 1.1,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    SpotlightBestTopFoodItem(restaurant: restaurants[index][0]),
-                    SpotlightBestTopFoodItem(restaurant: restaurants[index][1])
+                    SpotlightBestTopFoodItem(
+                        restaurant: SpotlightBestTopFood.topRestaurants[index]
+                            [0]),
+                    SpotlightBestTopFoodItem(
+                        restaurant: SpotlightBestTopFood.topRestaurants[index]
+                            [1])
                   ],
                 ),
               ),
