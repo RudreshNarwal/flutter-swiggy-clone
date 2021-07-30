@@ -29,7 +29,7 @@ class OffersScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             _RestaurantOfferView(),
             _PaymentOffersCouponView(),
@@ -41,6 +41,8 @@ class OffersScreen extends StatelessWidget {
 }
 
 class _RestaurantOfferView extends StatelessWidget {
+  const _RestaurantOfferView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final foods = [
@@ -92,9 +94,11 @@ class _RestaurantOfferView extends StatelessWidget {
 }
 
 class _PaymentOffersCouponView extends StatelessWidget {
+  const _PaymentOffersCouponView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final coupons = AvailableCoupon.getAvailableCoupons();
+    const coupons = AvailableCoupon.availableCoupons;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
