@@ -110,21 +110,21 @@ class _OrderNowView extends StatelessWidget {
                   .copyWith(fontSize: 18.0),
             ),
           ),
-          _RecommendedFoodView(),
+          const _RecommendedFoodView(),
           const CustomDividerView(dividerHeight: 15.0),
-          _FoodListView(
+          const _FoodListView(
             title: 'Breakfast',
-            foods: RestaurantDetail.getBreakfast(),
+            foods: RestaurantDetail.breakfast,
           ),
           const CustomDividerView(dividerHeight: 15.0),
-          _FoodListView(
+          const _FoodListView(
             title: 'All Time Favourite',
-            foods: RestaurantDetail.getAllTimeFavFoods(),
+            foods: RestaurantDetail.allTimeFavFoods,
           ),
           const CustomDividerView(dividerHeight: 15.0),
-          _FoodListView(
+          const _FoodListView(
             title: 'Kozhukattaiyum & Paniyarams',
-            foods: RestaurantDetail.getOtherDishes(),
+            foods: RestaurantDetail.otherDishes,
           )
         ],
       ),
@@ -179,10 +179,11 @@ class _OrderNowView extends StatelessWidget {
 }
 
 class _RecommendedFoodView extends StatelessWidget {
-  final foods = RestaurantDetail.getBreakfast();
+  const _RecommendedFoodView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const foods = RestaurantDetail.breakfast;
     return Container(
       padding: const EdgeInsets.all(10.0),
       child: GridView.count(
