@@ -8,7 +8,7 @@ class TopPicksForYouView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final foods = TopPicksFood.getTopPicksfoods();
+    const foods = TopPicksFood.topPicksfoods;
 
     return Container(
       margin: const EdgeInsets.all(15.0),
@@ -72,10 +72,11 @@ class TopPicksForYouView extends StatelessWidget {
                         child: Text(
                           foods[index].name,
                           maxLines: 2,
-                          style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.subtitle2!.copyWith(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                         ),
                       ),
                       UIHelper.verticalSpaceExtraSmall,
